@@ -28,7 +28,8 @@ endif()
 
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 
-find_package(OpenCV 3.0 QUIET)
+#set(OpenCV_DIR "~/lib/opencv-3.4.5/build")
+find_package(OpenCV 4.0 QUIET)
 if(NOT OpenCV_FOUND)
    find_package(OpenCV 2.4.3 QUIET)
    if(NOT OpenCV_FOUND)
@@ -36,7 +37,12 @@ if(NOT OpenCV_FOUND)
    endif()
 endif()
 
-find_package(Eigen3 3.1.0 REQUIRED)
+find_package(Eigen3 REQUIRED NO_MODULE)
+
+# if(NOT Eigen3_FOUND)
+#    message(FATAL_ERROR "eigen not found.")
+# endif()
+
 find_package(Pangolin REQUIRED)
 
 include_directories(
